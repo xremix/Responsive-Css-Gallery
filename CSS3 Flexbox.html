@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS3 Flexbox</title>
+	<style type="text/css">
+		/* Default Styles */
+		.photo img {
+			/* Just in case there are inline attributes */
+			width: 100% !important;
+			height: auto !important;
+		}
+		/* Site specific Styles */
+		#photos {
+			display: block;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: flex;
+			-webkit-align-items: left;
+			-webkit-moz-items: left;
+			align-items: left;
+			-webkit-justify-content: left;
+			-moz-justify-content: left;
+			justify-content: left;
+			-webkit-flex-direction: row;
+			-moz-flex-direction: row;
+			flex-direction: row;
+			-webkit-flex-wrap: wrap;
+			-moz-flex-wrap: wrap;
+			flex-wrap: wrap;
+			-webkit-flex-flow: row wrap;
+			-moz-flex-flow: row wrap;
+			flex-flow: row wrap;
+			-webkit-align-content: flex-end;
+			-moz-align-content: flex-end;
+			align-content: flex-end;
+		}
+		.photo {
+			display: inline-block;
+			display: box;
+			width: 33.3%;
+			position: relative;
+		}
+		#photos .photo .title{
+			position: absolute;
+			bottom:20px;
+			left:0px;
+			text-align: center;
+			right:0px;
+			font-size:2em;
+			font-weight: bold;
+			color:#979797;
+		}
+		
+	</style>
+</head>	
+
+<body>
+
+	<section id="photos">
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">1</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">2</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">3</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">4</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">5</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x320">
+			<div class="title">6</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">7</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">8</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x900">
+			<div class="title">9</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/900x600">
+			<div class="title">10</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">11</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x280">
+			<div class="title">12</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">13</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x900">
+			<div class="title">14</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">15</div>
+		</div>
+	</section>
+
+</body>
+</html>
