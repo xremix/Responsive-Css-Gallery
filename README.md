@@ -2,7 +2,8 @@
 Samples for a Web Gallery based on different approaches (Flexbox, CSS3 Column, Bootstrap, etc.)
 
 ##Status
-WIP
+`WIP`
+
 -[ ] Basic HTML
 -[ ] CSS3 Flexbox
 -[ ] CSS3 Column
@@ -10,34 +11,44 @@ WIP
 -[ ] Bootstrap Advanced
 
 ##Goal
-I strugled with most available Galleries out beacuse I wanted a really **lightweight**, **responsive**, **CSS-only** gallery that I can customize from it's styling.
-The gallery should work on **comon browsers** and just **look high-value** without having any unnecessary animations or gaps between the images.
+I strugled with most available Masorny Galleries I could find beacuse I wanted a **lightweight**, **responsive**, **CSS-only** gallery that I can customize from it's styling.
+The gallery should work on **comon browsers**, have a meaningful **order** as this could be important for some and just **look high-value** and **clean** without having any unnecessary animations or gaps between the images.
 I decided for showing the images in columns - rows would also be fine but that could make portrait images look small and nonrelevant.
-Also I took a look at other web galleries out and how they display the single images. My personal favorite was Flickr as it is exactly what I am searching for.
+Also I took a look at other web galleries out and how they display the single images. My personal favorite yet is Flickr as it is exactly what I am searching for.
+
+
+Click [here](https://raw.githubusercontent.com/xremix/Responsive-Css-Gallery/master/Ascii%20Demonstration) to see an example what my goal is
+
 
 ##Results
 
 ###Basic HTML
-WIP
+`WIP`
+
 Pros
 - Browser support
+- Correct order
+- Small overhead
 
 Downs
 - Ugly as hell
 
 ###CSS3 Flexbox
-WIP
+`WIP`
+
 Pros
 - Correct order on Desktop
 
 Downs
-- **Currently** no breakpoints - Always 3 fluid columns
 - Gaps everywhere
+- **Currently** no breakpoints - Always 3 fluid columns
+- *Many Vendor prefixes*
 
 [Browser Support](http://caniuse.com/#search=flexbox)
 
 ###CSS3 Column
-WIP
+`WIP`
+
 Pros
 - Responsive
 - No Gaps
@@ -49,10 +60,19 @@ Cons
 [Browser Support](http://caniuse.com/#feat=multicolumn)
 
 ###Bootstrap Basic
-WIP
+`WIP`
+
+Pros
+- Responsive and fluid possible
+- No Gaps
+
+Cons
+- Huge overhead if Bootstrap is not required for the site
+- Wrong order on mobile
+- Loops (backend or js) needed to put the images in the 3 rows
 
 ###Bootstrap Advanced
-WIP
+`WIP`
 
 ##Conclusion
-WIP
+`WIP`
