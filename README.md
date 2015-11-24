@@ -6,14 +6,14 @@ Samples for a Web Gallery based on different approaches (Flexbox, CSS3 Column, B
 
 -[ ] Basic HTML
 -[ ] CSS3 Flexbox
--[ ] CSS3 Column
--[ ] Bootstrap Basic
--[ ] Bootstrap Advanced
+-[x] CSS3 Column
+-[x] Bootstrap Basic
+-[ ] *Bootstrap Advanced*
 
 ##Goal
 I strugled with most available Masorny Galleries I could find beacuse I wanted a **lightweight**, **responsive**, **CSS-only** gallery that I can customize from it's styling.
 The gallery should work on **comon browsers**, have a meaningful **order** as this could be important for some and just **look high-value** and **clean** without having any unnecessary animations or gaps between the images.
-I decided for showing the images in columns - rows would also be fine but that could make portrait images look small and nonrelevant.
+I decided for showing the images in columns - rows would also be better but this seems to be impossible with plane CSS but that also could make portrait images look small and nonrelevant.
 Also I took a look at other web galleries out and how they display the single images. My personal favorite yet is Flickr as it is exactly what I am searching for.
 
 
@@ -76,3 +76,8 @@ Cons
 
 ##Conclusion
 `WIP`
+
+##JS Competitors
+
+##Justified Gallery
+This looks pretty much what I was looking for, even a row style, but of course has a lot of JS and CSS on top.

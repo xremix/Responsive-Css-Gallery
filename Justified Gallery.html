@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="bower_components/justifiedGallery/dist/css/justifiedGallery.css" />
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/justifiedGallery/dist/js/jquery.justifiedGallery.js"></script>
+	<style type="text/css">
+    .photo{
+        display: inline-block;
+            position: relative;
+    }
+
+        #photos .photo .title{
+            position: absolute;
+            bottom:20px;
+            left:0px;
+            text-align: center;
+            right:0px;
+            font-size:2em;
+            font-weight: bold;
+            color:#979797;
+        }
+	</style>
+</head>
+<body>
+
+<div id="photos" >
+
+    <div class="photo">
+        <img alt="Title 1" src="http://placehold.it/600x400"/>
+        <div class="title">1</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 2" src="http://placehold.it/600x400"/>
+        <div class="title">2</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 3" src="http://placehold.it/600x400"/>
+        <div class="title">3</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 2" src="http://placehold.it/600x900"/>
+        <div class="title">4</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 1" src="http://placehold.it/600x400"/>
+        <div class="title">5</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 2" src="http://placehold.it/600x400"/>
+        <div class="title">6</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 1" src="http://placehold.it/600x320"/>
+        <div class="title">7</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 2" src="http://placehold.it/600x400"/>
+        <div class="title">8</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 1" src="http://placehold.it/600x400"/>
+        <div class="title">9</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 2" src="http://placehold.it/600x400"/>
+        <div class="title">10</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 1" src="http://placehold.it/600x320"/>
+        <div class="title">11</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 2" src="http://placehold.it/600x900"/>
+        <div class="title">12</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 1" src="http://placehold.it/600x400"/>
+        <div class="title">13</div>
+    </div>
+    <div class="photo">
+        <img alt="Title 2" src="http://placehold.it/600x400"/>
+        <div class="title">14</div>
+    </div>
+
+
+    <!-- other images... -->
+    <script type="text/javascript">
+    $("#photos").justifiedGallery({
+    	rowHeight:350,
+    	margins:10,
+        captions:false
+    });
+
+	</script>
+</div>
+</body>
+</html>

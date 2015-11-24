@@ -1,0 +1,20 @@
+{
+  "name": "responsive-css-gallery",
+  "authors": [
+    "thoffmann <toni.hoffmann@arthrex.de>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "justifiedGallery": "Justified-Gallery#~3.6.0"
+  }
+}
