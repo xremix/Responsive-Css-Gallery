@@ -8,7 +8,7 @@ Samples for a Web Gallery based on different approaches (Flexbox, CSS3 Column, B
 -[ ] CSS3 Flexbox
 -[x] CSS3 Column
 -[x] Bootstrap Basic
--[ ] *Bootstrap Advanced*
+-[ ] Bootstrap Advanced
 
 ##Goal
 I strugled with most available Masorny Galleries I could find beacuse I wanted a **lightweight**, **responsive**, **CSS-only** gallery that I can customize from it's styling.
@@ -79,5 +79,5 @@ Cons
 
 ##JS Competitors
 
-##Justified Gallery
+###Justified Gallery
 This looks pretty much what I was looking for, even a row style, but of course has a lot of JS and CSS on top.
