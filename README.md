@@ -4,11 +4,11 @@ Samples for a Web Gallery based on different approaches (Flexbox, CSS3 Column, B
 ##Status
 `WIP`
 
--[ ] Basic HTML
--[ ] CSS3 Flexbox
--[x] CSS3 Column
--[x] Bootstrap Basic
--[ ] Bootstrap Advanced
+- [ ] Basic HTML
+- [ ] CSS3 Flexbox
+- [x] CSS3 Column
+- [x] Bootstrap Basic
+- [ ] *Bootstrap Advanced*
 
 ##Goal
 I strugled with most available Masorny Galleries I could find beacuse I wanted a **lightweight**, **responsive**, **CSS-only** gallery that I can customize from it's styling.
