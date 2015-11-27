@@ -24,7 +24,7 @@ Click [here](https://github.com/xremix/Responsive-Css-Gallery/blob/master/Ascii%
 ##Results
 
 ###Basic HTML
-[Demo](https://cdn.rawgit.com/xremix/Responsive-Css-Gallery/master/Basic%20HTML.html)
+[Demo](https://rawgit.com/xremix/Responsive-Css-Gallery/master/Basic%20HTML.html)
 
 `WIP`
 
@@ -36,7 +36,7 @@ Click [here](https://github.com/xremix/Responsive-Css-Gallery/blob/master/Ascii%
 
 
 ###CSS3 Flexbox
-[Demo](https://cdn.rawgit.com/xremix/Responsive-Css-Gallery/master/CSS3%20Flexbox.html)
+[Demo](https://rawgit.com/xremix/Responsive-Css-Gallery/master/CSS3%20Flexbox.html)
 
 `WIP`
 
@@ -50,7 +50,7 @@ Click [here](https://github.com/xremix/Responsive-Css-Gallery/blob/master/Ascii%
 [Browser Support](http://caniuse.com/#search=flexbox)
 
 ###CSS3 Column
-[Demo](https://cdn.rawgit.com/xremix/Responsive-Css-Gallery/master/CSS3%20Column.html)
+[Demo](https://rawgit.com/xremix/Responsive-Css-Gallery/master/CSS3%20Column.html)
 
 `WIP`
 
@@ -65,7 +65,7 @@ Click [here](https://github.com/xremix/Responsive-Css-Gallery/blob/master/Ascii%
 [Browser Support](http://caniuse.com/#feat=multicolumn)
 
 ###Bootstrap
-[Demo](https://cdn.rawgit.com/xremix/Responsive-Css-Gallery/master/Bootstrap%20Basic.html)
+[Demo](https://rawgit.com/xremix/Responsive-Css-Gallery/master/Bootstrap%20Basic.html)
 
 `WIP`
 
@@ -82,7 +82,7 @@ Click [here](https://github.com/xremix/Responsive-Css-Gallery/blob/master/Ascii%
 ##JavaScript
 
 ###JS Gallery
-[Demo](https://cdn.rawgit.com/xremix/Responsive-Css-Gallery/master/JS%20Gallery.html)
+[Demo](https://rawgit.com/xremix/Responsive-Css-Gallery/master/JS%20Gallery.html)
 I wanted to have try a JS Gallery on my own, so I just started with development.
 
 | Pros | Cons |
@@ -91,5 +91,5 @@ I wanted to have try a JS Gallery on my own, so I just started with development.
 | Overhead is adquate | jQuery, Underscore is **currently** required |
 
 ###Justified Gallery
-[Demo](https://cdn.rawgit.com/xremix/Responsive-Css-Gallery/master/Justified%20Gallery.html)
+[Demo](https://rawgit.com/xremix/Responsive-Css-Gallery/master/Justified%20Gallery.html)
 This looks pretty much what I was looking for, even a row style, but of course has a lot of JS and CSS on top.
