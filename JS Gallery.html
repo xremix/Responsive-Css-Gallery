@@ -11,30 +11,29 @@
 	<style type="text/css">
 		body {
 			text-align: center;
+			background-color: gray;
 		}
 
 		.photo {
-			float: left;
-			background-color: lightgray; 
+			display: inline-block;
+			width:auto;
+			height:auto;
+			position: relative;
 		}
-
-		.normal {
-			width: 40px;
-			height: 30px; 
+		.photo img{
+			width: 100%;
 		}
-
-		.panorama {
-			width: 160px;
-			height: 90px; 
+		.title{
+			position: absolute;
+			bottom:20px;
+			left:0px;
+			text-align: center;
+			right:0px;
+			font-size:2em;
+			font-weight: bold;
+			color:#979797;
 		}
-
-		.portrait {
-			width: 25px;
-			height: 40px; 
-		}
-
 		.photos {
-			width: 80%;
 			margin:auto;
 		}
 
@@ -42,84 +41,89 @@
 </head>
 <body>
 	<div class="photos">
-		<div class="normal photo"></div>
-		<div class="panorama photo"></div>
-		<div class="normal photo"></div>
-		<div class="normal photo"></div>
-		<div class="portrait photo"></div>
-		<div class="panorama photo"></div>
-		<div class="normal photo"></div>
-		<div class="normal photo"></div>
-		<div class="portrait photo"></div>
-		<div class="panorama photo"></div>
-		<div class="panorama photo"></div>
-		<div class="panorama photo"></div>
-		<div class="normal photo"></div>
-		<div class="normal photo"></div>
-		<div class="normal photo"></div>
-		<div class="portrait photo"></div>
-		<div class="normal photo"></div>
-		<div class="normal photo"></div>
-		<div class="normal photo"></div>
+		<div class="photo">
+			<img src="http://placehold.it/400x900">
+			<div class="title">10</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/400x900">
+			<div class="title">10</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x900">
+			<div class="title">10</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">1</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">2</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">3</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">4</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">5</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x320">
+			<div class="title">6</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">7</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">8</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x900">
+			<div class="title">9</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/900x600">
+			<div class="title">10</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">11</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x280">
+			<div class="title">12</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">13</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x900">
+			<div class="title">14</div>
+		</div>
+		<div class="photo">
+			<img src="http://placehold.it/600x400">
+			<div class="title">15</div>
+		</div> 
 	</div>
 
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+	<script src="https://rawgit.com/xremix/xGallerify/master/dist/xgallerify.min.js"></script>
 	<script type="text/javascript">
-		$.fn.gallerify = function(params){
-			params = params ? params : {};
-			params.margin = params.margin ? params.margin : 5;
-			currentJqueryObject = this;
-
-			function resizeImageRow(rowWidth, imgObjs){
-
-				var maxHeight = _.max(imgObjs, function(t){return t.height() }).height();
-				for (var i = 0; i < imgObjs.length; i++) {
-					var factor =  maxHeight / imgObjs[i].height();
-
-					imgObjs[i].width(imgObjs[i].width() * factor);
-					imgObjs[i].height(imgObjs[i].height() * factor);
-
-				};
-
-				var currentWidth = _.reduce(imgObjs, function(result, element){return result + element.width()}, 0);
-
-				// -1 pixel to make the resize look smooth
-				var factor =( rowWidth - 1 - (imgObjs.length * params.margin * 2)) / currentWidth;
-				for (var i = 0; i < imgObjs.length; i++) {
-					imgObjs[i].width(imgObjs[i].width() * factor);
-					imgObjs[i].height(imgObjs[i].height() * factor);
-				};
-			}
-
-			function resizeImages (){
-				function getImages(_con){
-					var imgs = [];
-					var childs =  _con.children();
-					for (var i = 0; i < childs.length; i++) {
-						imgs.push($(childs[i]));
-						$(childs[i]).css("margin", params.margin);
-						if(imgs.length > 3){
-							resizeImageRow(currentJqueryObject.width(), imgs)
-							imgs = [];
-						}
-					};
-					return imgs;
-				}
-				getImages(currentJqueryObject);
-			}
-
-			resizeImages();
-			$( window ).resize(function() {
-				resizeImages();
-			});
-			return this;
-		};
-
-		$('.photos').gallerify({
-			margin:5
-		});
+			$('.photos').gallerify({
+				// margin:5,
+				// width:300
+			});	
 	</script>
 </body>
 </html>
