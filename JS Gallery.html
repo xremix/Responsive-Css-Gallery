@@ -15,7 +15,8 @@
 
 		.photo {
 			float: left;
-			background-color: lightgray; 
+			background-color: gray; 
+			display: inline-block;
 		}
 
 		.normal {
@@ -36,15 +37,31 @@
 		.photos {
 			width: 80%;
 			margin:auto;
+			background-color: green;
 		}
 
 	</style>
 </head>
 <body>
 	<div class="photos">
+		
+
 		<div class="normal photo"></div>
+		<div class="portrait photo"></div>
 		<div class="panorama photo"></div>
+		
 		<div class="normal photo"></div>
+		<div class="portrait photo"></div>
+		<div class="panorama photo"></div>
+		
+		<div class="normal photo"></div>
+		<div class="portrait photo"></div>
+		<div class="portrait photo"></div>
+
+		<div class="normal photo"></div>
+		<div class="portrait photo"></div>
+		<div class="panorama photo"></div>
+		
 		<div class="normal photo"></div>
 		<div class="portrait photo"></div>
 		<div class="panorama photo"></div>
@@ -61,6 +78,7 @@
 		<div class="normal photo"></div>
 		<div class="normal photo"></div>
 		<div class="normal photo"></div>
+
 	</div>
 
 	<!-- Scripts -->
@@ -68,53 +86,81 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 	<script type="text/javascript">
 		$.fn.gallerify = function(params){
-			params = params ? params : {};
-			params.margin = params.margin ? params.margin : 5;
-			currentJqueryObject = this;
+			var _this = this;
 
-			function resizeImageRow(rowWidth, imgObjs){
+			function resizeHeight(jChildren, childHeight){
+				for (var i = 0; i < jChildren.length; i++) {
+					var factor =  childHeight / jChildren[i].height();
+					var x = jChildren[i].height();
 
-				var maxHeight = _.max(imgObjs, function(t){return t.height() }).height();
-				for (var i = 0; i < imgObjs.length; i++) {
-					var factor =  maxHeight / imgObjs[i].height();
-
-					imgObjs[i].width(imgObjs[i].width() * factor);
-					imgObjs[i].height(imgObjs[i].height() * factor);
-
+					jChildren[i].width(jChildren[i].width() * factor);
+					jChildren[i].height(jChildren[i].height() * factor);
+					console.log("Child height: " + childHeight + " current height: " + x + " new height: " + jChildren[i].height() + " factor: " + factor);
 				};
+			}
 
-				var currentWidth = _.reduce(imgObjs, function(result, element){return result + element.width()}, 0);
-
+			function resizeWidth(jChildren, rowWidth, margin){
+				var currentWidth = _.reduce(jChildren, function(result, element){return result + element.width()}, 0);
 				// -1 pixel to make the resize look smooth
-				var factor =( rowWidth - 1 - (imgObjs.length * params.margin * 2)) / currentWidth;
-				for (var i = 0; i < imgObjs.length; i++) {
-					imgObjs[i].width(imgObjs[i].width() * factor);
-					imgObjs[i].height(imgObjs[i].height() * factor);
+				//Test adding 2px to the margin
+				var factor =( rowWidth - 1 - (jChildren.length * (margin + 2) * 2)) / currentWidth;
+			  	//var factor =( rowWidth - 1 - (jChildren.length * (margin) * 2)) / currentWidth;
+				for (var i = 0; i < jChildren.length; i++) {
+					jChildren[i].css('width', jChildren[i].width() * factor);
+					jChildren[i].css('height', jChildren[i].height() * factor);
+					jChildren[i].data("factorwidth", parseInt(factor));
+					console.log(jChildren[i].data("factorwidth"));
 				};
 			}
 
-			function resizeImages (){
-				function getImages(_con){
-					var imgs = [];
-					var childs =  _con.children();
-					for (var i = 0; i < childs.length; i++) {
-						imgs.push($(childs[i]));
-						$(childs[i]).css("margin", params.margin);
-						if(imgs.length > 3){
-							resizeImageRow(currentJqueryObject.width(), imgs)
-							imgs = [];
-						}
-					};
-					return imgs;
-				}
-				getImages(currentJqueryObject);
+			function renderRow(jChildren, galleryWidth, margin){
+				var rowHeight = _.min(jChildren, function(t){return t.height() }).height();
+				resizeHeight(jChildren, rowHeight);
+				//TODO Test
+				//resizeHeight(jChildren, 200);
+
+				resizeWidth(jChildren, galleryWidth, margin);
 			}
 
-			resizeImages();
+			function renderGallery(jGallery, _params){
+				var jChildren = []; //jquery childs
+				var jChildRows = []; //jquery childs
+				var dChildren = jGallery.children(); //dom childs
+				_params.imagesPerRow = _params.imagesPerRow ? _params.imagesPerRow : 3;
+
+				var width = _params.width ? _params.width : jGallery.width();
+				_params.margin =_params.margin ? _params.margin : 20;
+				for (var i = 0; i < dChildren.length; i++) {
+					var _jChild = $(dChildren[i]);
+					if(_jChild.width() > 0){
+						
+						jChildren.push(_jChild);
+						_jChild.css("margin", _params.margin);
+						
+						if(jChildren.length === _params.imagesPerRow || i == dChildren.length -1){
+							jChildRows.push(jChildren);
+							renderRow(jChildRows[jChildRows.length - 1], width, _params.margin);
+							jChildren = [];
+						}
+					}else{
+						_jChild.load(function() {
+						  	//doGalleryStuff();
+						    $( this ).addClass( "imgloaded" );
+						});
+
+					}
+				};
+			}
+
+			function doGalleryStuff(){
+				renderGallery(_this, params);	
+			}
+			setTimeout(doGalleryStuff, 500);
+			doGalleryStuff();
 			$( window ).resize(function() {
-				resizeImages();
+				doGalleryStuff();
 			});
-			return this;
+			return _this;
 		};
 
 		$('.photos').gallerify({
