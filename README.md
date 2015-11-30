@@ -8,8 +8,7 @@ Samples for a Web Gallery based on different approaches
 - [x] CSS3 Flexbox
 - [x] CSS3 Column
 - [x] Bootstrap
-- [ ] JS Gallery
-- [x] *Justified Gallery*
+- [x] JS Gallery
 
 ##Goal
 I strugled with most available Masorny Galleries I could find beacuse I wanted a **lightweight**, **responsive**, **CSS-only** gallery that I can customize from it's styling.
@@ -79,13 +78,9 @@ I wanted to have try a JS Gallery on my own, so I just started with development.
 
 | Pros | Cons |
 | ------------- | ----------- |
-| A lot of work for me :) | More or less what Justified Gallery is doing |
+| Perfect design on every device | JS required |
 | Overhead is adquate | jQuery, Underscore is **currently** required |
-
-###Justified Gallery
-[Demo](https://rawgit.com/xremix/Responsive-Css-Gallery/master/Justified%20Gallery.html)
-This looks pretty much what I was looking for, even a row style, but of course has a lot of JS and CSS on top.
-
+|  | A lot of work for me :) |
 
 ##Conclusion
 `WIP`
