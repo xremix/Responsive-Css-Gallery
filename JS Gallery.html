@@ -11,6 +11,7 @@
 	<style type="text/css">
 		body {
 			text-align: center;
+			background-color: darkgray;
 		}
 
 		.photo {
@@ -37,7 +38,11 @@
 		.photos {
 			width: 80%;
 			margin:auto;
-			background-color: green;
+			background-color: gray;
+		}
+		/* TEST */
+		img{
+			-webkit-filter: brightness(1);
 		}
 
 	</style>
@@ -45,7 +50,7 @@
 <body>
 	<div class="photos">
 		
-
+<!-- 
 		<div class="normal photo"></div>
 		<div class="portrait photo"></div>
 		<div class="panorama photo"></div>
@@ -77,7 +82,9 @@
 		<div class="portrait photo"></div>
 		<div class="normal photo"></div>
 		<div class="normal photo"></div>
-		<div class="normal photo"></div>
+		<div class="normal photo"></div> -->
+
+
 
 	</div>
 
@@ -85,18 +92,26 @@
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 	<script type="text/javascript">
+	window.readyForGallerify = false;
+	$(window).load(function() {
+	    window.readyForGallerify = true;
+	});
 		$.fn.gallerify = function(params){
-			var _this = this;
+			var _this = this;// -1 pixel to make the resize look smooth
 
-			function resizeHeight(jChildren, childHeight){
-				for (var i = 0; i < jChildren.length; i++) {
-					var factor =  childHeight / jChildren[i].height();
-					var x = jChildren[i].height();
-
-					jChildren[i].width(jChildren[i].width() * factor);
-					jChildren[i].height(jChildren[i].height() * factor);
-					console.log("Child height: " + childHeight + " current height: " + x + " new height: " + jChildren[i].height() + " factor: " + factor);
-				};
+			function getImagesPerRow(screenWidth){
+				console.log(screenWidth);
+			 	if(screenWidth > 1200){
+				    return 4;
+				}
+			    else if(screenWidth > 992){
+				    return 3;
+				}
+			    else if(screenWidth > 768){
+				    return 2;
+				}else {
+				    return 1;
+				}
 			}
 
 			function resizeWidth(jChildren, rowWidth, margin){
@@ -106,19 +121,47 @@
 				var factor =( rowWidth - 1 - (jChildren.length * (margin + 2) * 2)) / currentWidth;
 			  	//var factor =( rowWidth - 1 - (jChildren.length * (margin) * 2)) / currentWidth;
 				for (var i = 0; i < jChildren.length; i++) {
+					
 					jChildren[i].css('width', jChildren[i].width() * factor);
-					jChildren[i].css('height', jChildren[i].height() * factor);
-					jChildren[i].data("factorwidth", parseInt(factor));
-					console.log(jChildren[i].data("factorwidth"));
+					var originalHeight = jChildren[i].height();
+					if(jChildren[i].height() == originalHeight){
+						// console.log("Height is equal");
+						// jChildren[i].height(jChildren[i].height() * factor);
+						// console.log("New " + jChildren[i].height() + " from " + originalHeight);
+					}else{
+						// console.log("Height is not equal");
+						// jChildren[i].height(jChildren[i].height());
+					}
+					//jChildren[i].css('height', jChildren[i].height() * factor);
+				};
+			}
+
+			function resizeHeight(jChildren, childHeight){
+				for (var i = 0; i < jChildren.length; i++) {
+					var factor =  childHeight / jChildren[i].height();
+					var x = jChildren[i].width();
+					var y = jChildren[i].height();
+
+					jChildren[i].width(jChildren[i].width() * factor);
+
+					var originalHeight = jChildren[i].height();
+					if(jChildren[i].height() == originalHeight){
+						// console.log("Height is equal");
+						// jChildren[i].height(jChildren[i].height() * factor);
+						// console.log("New " + jChildren[i].height() + " from " + originalHeight);
+					}else{
+						// console.log("Height is not equal");
+						// jChildren[i].height(jChildren[i].height());
+					}
+					//jChildren[i].height(jChildren[i].height() * factor);
+					// jChildren[i].height(jChildren[i].height());
 				};
 			}
 
 			function renderRow(jChildren, galleryWidth, margin){
 				var rowHeight = _.min(jChildren, function(t){return t.height() }).height();
+				
 				resizeHeight(jChildren, rowHeight);
-				//TODO Test
-				//resizeHeight(jChildren, 200);
-
 				resizeWidth(jChildren, galleryWidth, margin);
 			}
 
@@ -126,10 +169,11 @@
 				var jChildren = []; //jquery childs
 				var jChildRows = []; //jquery childs
 				var dChildren = jGallery.children(); //dom childs
-				_params.imagesPerRow = _params.imagesPerRow ? _params.imagesPerRow : 3;
-
 				var width = _params.width ? _params.width : jGallery.width();
-				_params.margin =_params.margin ? _params.margin : 20;
+				imagesPerRow = _params.imagesPerRow ? _params.imagesPerRow : getImagesPerRow(width);
+				console.log(_params);
+				
+				_params.margin =_params.margin ? _params.margin : 5;
 				for (var i = 0; i < dChildren.length; i++) {
 					var _jChild = $(dChildren[i]);
 					if(_jChild.width() > 0){
@@ -137,14 +181,14 @@
 						jChildren.push(_jChild);
 						_jChild.css("margin", _params.margin);
 						
-						if(jChildren.length === _params.imagesPerRow || i == dChildren.length -1){
+						if(jChildren.length === imagesPerRow || i == dChildren.length -1){
 							jChildRows.push(jChildren);
 							renderRow(jChildRows[jChildRows.length - 1], width, _params.margin);
 							jChildren = [];
 						}
 					}else{
 						_jChild.load(function() {
-						  	//doGalleryStuff();
+						  	renderGallery(_this, params);
 						    $( this ).addClass( "imgloaded" );
 						});
 
@@ -152,20 +196,29 @@
 				};
 			}
 
-			function doGalleryStuff(){
-				renderGallery(_this, params);	
+			function init(){
+				console.log(window.readyForGallerify);
+				if(window.readyForGallerify){
+					renderGallery(_this, params);
+				}else{
+					$(window).on("load", function() {
+						renderGallery(_this, params);
+					});
+				}
+				
+				$( window ).resize(function() {
+					renderGallery(_this, params);
+				});	
 			}
-			setTimeout(doGalleryStuff, 500);
-			doGalleryStuff();
-			$( window ).resize(function() {
-				doGalleryStuff();
-			});
+			init();
 			return _this;
 		};
-
-		$('.photos').gallerify({
-			margin:5
-		});
+		// setTimeout(function(){
+			$('.photos').gallerify({
+				//margin:50
+			});	
+		// }, 2000);
+		
 	</script>
 </body>
 </html>
