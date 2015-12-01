@@ -78,9 +78,8 @@ I wanted to have try a JS Gallery on my own, so I just started with development.
 
 | Pros | Cons |
 | ------------- | ----------- |
-| Perfect design on every device | JS required |
-| Overhead is adquate | jQuery, Underscore is **currently** required |
-|  | A lot of work for me :) |
+| Perfect design on every device | JS / jQuery required |
+| Overhead is adquate | More work than the CSS solutions |
 
 ##Conclusion
 `WIP`
