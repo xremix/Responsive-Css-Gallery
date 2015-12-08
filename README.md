@@ -31,7 +31,7 @@ Click [here](https://github.com/xremix/Responsive-Css-Gallery/blob/master/Ascii%
 | Pros | Cons |
 | ------------- | ----------- |
 | Browser support|Ugly as hell|
-| Correct order|       |
+| Correct order| Not really responsive |
 | Small overhead|       |
 
 
